@@ -27,4 +27,4 @@ jobs:
         run: buf lint
 
       - name: Check breaking changes
-        run: buf breaking --against '.git#branch=main'
+        run: buf breaking --against 'https://github.com/p2p-energy-trading-platform/protobuf.git#branch=main'
