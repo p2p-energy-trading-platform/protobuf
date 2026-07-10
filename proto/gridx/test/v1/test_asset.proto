@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package gridx.test.v1;
+
+option go_package = "github.com/p2p-energy-trading-platform/go-sdk/gen/gridx/test/v1;testv1";
+
+// Test proto files
+message TestMoney {
+  string currency_code = 1;
+  int64 units = 2;
+  int32 nanos = 3;
+}

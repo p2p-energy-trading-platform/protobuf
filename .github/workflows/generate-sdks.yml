@@ -1,0 +1,163 @@
+name: Generate Versioned SDKs
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: read
+
+jobs:
+  generate-sdks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout proto repo
+        uses: actions/checkout@v4
+
+      - name: Extract version
+        id: version
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          VERSION="${TAG#v}"
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Setup Buf
+        uses: bufbuild/buf-action@v1
+        with:
+          setup_only: true
+
+      - name: Generate SDK code
+        run: buf generate
+
+      # -------------------------
+      # Go SDK
+      # -------------------------
+      - name: Checkout Go SDK repo
+        uses: actions/checkout@v4
+        with:
+          repository: p2p-energy-trading-platform/go-sdk
+          token: ${{ secrets.SDK_PUSH_TOKEN }}
+          path: go-sdk
+          fetch-depth: 0
+
+      - name: Update Go SDK
+        run: |
+          rm -rf go-sdk/gen
+          mkdir -p go-sdk/gen
+          cp -r gen/go/* go-sdk/gen/
+
+          cd go-sdk
+          go mod tidy
+
+          echo "${{ steps.version.outputs.version }}" > VERSION
+
+          if [ ! -f CHANGELOG.md ]; then
+            echo "# Changelog" > CHANGELOG.md
+          fi
+
+          {
+            echo ""
+            echo "## ${{ steps.version.outputs.tag }}"
+            echo ""
+            echo "Generated from p2p-energy-trading-platform/protobuf@${{ steps.version.outputs.tag }}."
+          } >> CHANGELOG.md
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+
+          git commit -m "chore(release): ${{ steps.version.outputs.tag }}" || echo "No Go SDK changes"
+
+          git tag -f "${{ steps.version.outputs.tag }}"
+          git push
+          git push -f origin "${{ steps.version.outputs.tag }}"
+
+      # -------------------------
+      # TypeScript SDK
+      # -------------------------
+      - name: Checkout TypeScript SDK repo
+        uses: actions/checkout@v4
+        with:
+          repository: p2p-energy-trading-platform/typescript-sdk
+          token: ${{ secrets.SDK_PUSH_TOKEN }}
+          path: typescript-sdk
+          fetch-depth: 0
+
+      - name: Update TypeScript SDK
+        run: |
+          rm -rf typescript-sdk/src/gen
+          mkdir -p typescript-sdk/src/gen
+          cp -r gen/typescript/* typescript-sdk/src/gen/
+
+          cd typescript-sdk
+
+          echo "${{ steps.version.outputs.version }}" > VERSION
+          npm version "${{ steps.version.outputs.version }}" --no-git-tag-version
+          npm install
+          npm run build
+
+          if [ ! -f CHANGELOG.md ]; then
+            echo "# Changelog" > CHANGELOG.md
+          fi
+
+          {
+            echo ""
+            echo "## ${{ steps.version.outputs.tag }}"
+            echo ""
+            echo "Generated from p2p-energy-trading-platform/protobuf@${{ steps.version.outputs.tag }}."
+          } >> CHANGELOG.md
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+
+          git commit -m "chore(release): ${{ steps.version.outputs.tag }}" || echo "No TypeScript SDK changes"
+
+          git tag -f "${{ steps.version.outputs.tag }}"
+          git push
+          git push -f origin "${{ steps.version.outputs.tag }}"
+
+      # -------------------------
+      # C++ SDK
+      # -------------------------
+      - name: Checkout C++ SDK repo
+        uses: actions/checkout@v4
+        with:
+          repository: p2p-energy-trading-platform/cpp-sdk
+          token: ${{ secrets.SDK_PUSH_TOKEN }}
+          path: cpp-sdk
+          fetch-depth: 0
+
+      - name: Update C++ SDK
+        run: |
+          rm -rf cpp-sdk/gen
+          mkdir -p cpp-sdk/gen
+          cp -r gen/cpp/* cpp-sdk/gen/
+
+          cd cpp-sdk
+
+          echo "${{ steps.version.outputs.version }}" > VERSION
+
+          if [ ! -f CHANGELOG.md ]; then
+            echo "# Changelog" > CHANGELOG.md
+          fi
+
+          {
+            echo ""
+            echo "## ${{ steps.version.outputs.tag }}"
+            echo ""
+            echo "Generated from p2p-energy-trading-platform/protobuf@${{ steps.version.outputs.tag }}."
+          } >> CHANGELOG.md
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+
+          git commit -m "chore(release): ${{ steps.version.outputs.tag }}" || echo "No C++ SDK changes"
+
+          git tag -f "${{ steps.version.outputs.tag }}"
+          git push
+          git push -f origin "${{ steps.version.outputs.tag }}"

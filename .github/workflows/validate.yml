@@ -1,0 +1,30 @@
+name: Validate Protobuf
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout proto repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Buf
+        uses: bufbuild/buf-action@v1
+        with:
+          setup_only: true
+
+      - name: Check formatting
+        run: buf format --diff --exit-code
+
+      - name: Lint protobuf
+        run: buf lint
+
+      - name: Check breaking changes
+        run: buf breaking --against '.git#branch=main'
