@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v0.3.0...v0.4.0) (2026-07-10)
+
+
+### Features
+
+* add price field to test asset ([#5](https://github.com/p2p-energy-trading-platform/protobuf/issues/5)) ([e312407](https://github.com/p2p-energy-trading-platform/protobuf/commit/e312407686f2384c935acd59cb2545b7c5b2af12))
+
 ## [0.3.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v0.2.0...v0.3.0) (2026-07-10)
 
 
