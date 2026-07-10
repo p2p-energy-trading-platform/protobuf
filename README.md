@@ -15,7 +15,7 @@ Generated SDK code is published into separate SDK repositories:
 ## Repository Structure
 
 ```text
-gridx-proto/
+protobuf/
 ├── proto/
 │   └── gridx/
 │       └── test/
