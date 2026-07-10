@@ -1,0 +1,12 @@
+{
+    "release-type": "simple",
+    "include-component-in-tag": false,
+    "packages": {
+        ".": {
+            "package-name": "protobuf",
+            "extra-files": [
+                "VERSION"
+            ]
+        }
+    }
+}
