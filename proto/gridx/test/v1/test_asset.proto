@@ -10,3 +10,7 @@ message TestMoney {
   int64 units = 2;
   int32 nanos = 3;
 }
+
+message TestAsset {
+  string name = 1;
+}
