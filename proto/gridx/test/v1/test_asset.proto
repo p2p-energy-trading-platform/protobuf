@@ -13,4 +13,5 @@ message TestMoney {
 
 message TestAsset {
   string name = 1;
+  int64 price = 2;
 }
