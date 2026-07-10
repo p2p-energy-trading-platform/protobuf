@@ -1,0 +1,25 @@
+version: v2
+clean: true
+
+plugins:
+  # Go protobuf message types
+  - remote: buf.build/protocolbuffers/go
+    out: gen/go
+    opt:
+      - paths=source_relative
+
+  # Go gRPC client/server stubs
+  - remote: buf.build/grpc/go
+    out: gen/go
+    opt:
+      - paths=source_relative
+
+  # TypeScript protobuf message types
+  - remote: buf.build/bufbuild/es
+    out: gen/typescript
+    opt:
+      - target=ts
+
+  # C++ protobuf message types only
+  - remote: buf.build/protocolbuffers/cpp
+    out: gen/cpp
