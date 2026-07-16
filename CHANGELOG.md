@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/p2p-energy-trading-platform/protobuf/compare/v0.5.0...v0.5.1) (2026-07-16)
+
+
+### Bug Fixes
+
+* cpp protobuf version fix ([#9](https://github.com/p2p-energy-trading-platform/protobuf/issues/9)) ([9fa923f](https://github.com/p2p-energy-trading-platform/protobuf/commit/9fa923ff455b49ecdca6b5a86ac26c859b9584d1))
+
 ## [0.5.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v0.4.0...v0.5.0) (2026-07-10)
 
 
