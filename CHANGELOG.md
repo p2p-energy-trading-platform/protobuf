@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/p2p-energy-trading-platform/protobuf/compare/v0.6.0...v0.6.1) (2026-07-20)
+
+
+### Bug Fixes
+
+* trigger patch for cpp-sdk ([#13](https://github.com/p2p-energy-trading-platform/protobuf/issues/13)) ([09c141f](https://github.com/p2p-energy-trading-platform/protobuf/commit/09c141f0c6215344138146dbe5b64de4b0e19bc8))
+
 ## [0.6.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v0.5.1...v0.6.0) (2026-07-20)
 
 
