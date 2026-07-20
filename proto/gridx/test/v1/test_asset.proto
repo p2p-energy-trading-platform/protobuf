@@ -15,4 +15,5 @@ message TestAsset {
   string name = 1;
   int64 price = 2;
   string type = 3;
+  int32 test_price = 4;
 }
