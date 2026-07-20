@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package gridx.order.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/p2p-energy-trading-platform/go-sdk/gen/gridx/order/v1;orderv1";
+
+enum Side {
+  SIDE_UNSPECIFIED = 0;
+  SIDE_BUY = 1;
+  SIDE_SELL = 2;
+}
+
+enum OrderType {
+  ORDER_TYPE_UNSPECIFIED = 0;
+  ORDER_TYPE_LIMIT = 1;
+}
+
+enum OrderStatus {
+  ORDER_STATUS_UNSPECIFIED = 0;
+  ORDER_STATUS_NEW = 1;
+  ORDER_STATUS_PARTIALLY_FILLED = 2;
+  ORDER_STATUS_FILLED = 3;
+  ORDER_STATUS_CANCELLED = 4;
+  ORDER_STATUS_EXPIRED = 5;
+}
+
+message MarketId {
+  google.protobuf.Timestamp delivery_slot_start = 1;
+}
+
+message OrderAccepted {
+  string event_id = 1;
+
+  uint64 order_id = 2;
+  uint64 user_id = 3;
+
+  MarketId market_id = 4;
+  uint32 grid_zone_id = 5;
+
+  Side side = 6;
+  OrderType order_type = 7;
+  OrderStatus status = 8;
+
+  int64 price = 9;
+  int64 quantity = 10;
+  double remaining_quantity = 11;
+
+  google.protobuf.Timestamp expires_at = 12;
+  google.protobuf.Timestamp created_at = 13;
+}
