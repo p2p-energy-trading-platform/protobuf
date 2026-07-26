@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v0.7.1...v1.0.0) (2026-07-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* removed redundant field names in grid rule proto ([#19](https://github.com/p2p-energy-trading-platform/protobuf/issues/19))
+
+### Features
+
+* removed redundant field names in grid rule proto ([#19](https://github.com/p2p-energy-trading-platform/protobuf/issues/19)) ([26be59b](https://github.com/p2p-energy-trading-platform/protobuf/commit/26be59b08fbf2454f9ac484ae2086c69d694142e))
+
 ## [0.7.1](https://github.com/p2p-energy-trading-platform/protobuf/compare/v0.7.0...v0.7.1) (2026-07-26)
 
 
