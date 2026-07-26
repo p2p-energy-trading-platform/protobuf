@@ -7,10 +7,12 @@ import "google/protobuf/timestamp.proto";
 option go_package = "github.com/p2p-energy-trading-platform/go-sdk/gen/gridx/grid/v1;gridv1";
 
 message GridTransferRule {
-  string seller_grid_zone = 1;
-  string buyer_grid_zone = 2;
+  string seller_grid_zone = 1 [deprecated = true];
+  string buyer_grid_zone = 2 [deprecated = true];
   bool allowed = 3;
   int64 grid_fee_per_kwh = 4;
   uint32 version = 5;
   google.protobuf.Timestamp updated_at = 6;
+  uint32 seller_grid_zone_id = 7;
+  uint32 buyer_grid_zone_id = 8;
 }
