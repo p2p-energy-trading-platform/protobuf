@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.1](https://github.com/p2p-energy-trading-platform/protobuf/compare/v0.7.0...v0.7.1) (2026-07-26)
+
+
+### Bug Fixes
+
+* deprecated buyer and seller grid zoneincorrect types ([#17](https://github.com/p2p-energy-trading-platform/protobuf/issues/17)) ([5d32783](https://github.com/p2p-energy-trading-platform/protobuf/commit/5d32783ddb2ef4faa0f44d726672dcf811df096d))
+
 ## [0.7.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v0.6.1...v0.7.0) (2026-07-26)
 
 
