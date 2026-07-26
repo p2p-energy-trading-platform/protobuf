@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v0.6.1...v0.7.0) (2026-07-26)
+
+
+### Features
+
+* add grid transfer rule proto ([#15](https://github.com/p2p-energy-trading-platform/protobuf/issues/15)) ([aeee6a1](https://github.com/p2p-energy-trading-platform/protobuf/commit/aeee6a113a71fa142570384dcbfe7c26860d66f1))
+
 ## [0.6.1](https://github.com/p2p-energy-trading-platform/protobuf/compare/v0.6.0...v0.6.1) (2026-07-20)
 
 
