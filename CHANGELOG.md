@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.0.0...v1.1.0) (2026-08-06)
+
+
+### Features
+
+* **proto:** add trade and order event definitions ([#21](https://github.com/p2p-energy-trading-platform/protobuf/issues/21)) ([e39a2b0](https://github.com/p2p-energy-trading-platform/protobuf/commit/e39a2b0475a850ad1517d7ee71e5dbed189be7fa))
+
 ## [1.0.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v0.7.1...v1.0.0) (2026-07-26)
 
 
