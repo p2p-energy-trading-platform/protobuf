@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package gridx.order.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/p2p-energy-trading-platform/go-sdk/gen/gridx/order/v1;orderv1";
+
+enum OrderUpdateType {
+  ORDER_UPDATE_TYPE_UNSPECIFIED = 0;
+  ORDER_UPDATED = 1;
+  ORDER_PARTIALLY_FILLED = 2;
+  ORDER_FILLED = 3;
+  ORDER_CANCELLED = 4;
+  ORDER_EXPIRED = 5;
+}
+
+message OrderUpdated {
+  string event_id = 1;
+
+  OrderUpdateType event_type = 2;
+
+  uint64 order_id = 3;
+
+  OrderStatus status = 4;
+
+  int64 remaining_quantity = 5;
+
+  google.protobuf.Timestamp updated_at = 6;
+}
