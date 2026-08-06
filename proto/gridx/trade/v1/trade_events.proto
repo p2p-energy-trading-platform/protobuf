@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package gridx.trade.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/p2p-energy-trading-platform/go-sdk/gen/gridx/trade/v1;tradev1";
+
+message TradeExecuted {
+  string event_id = 1;
+
+  uint64 trade_id = 2;
+
+  uint64 buy_order_id = 3;
+  uint64 sell_order_id = 4;
+
+  uint64 buyer_id = 5;
+  uint64 seller_id = 6;
+
+  uint32 buyer_grid_zone_id = 7;
+  uint32 seller_grid_zone_id = 8;
+
+  int64 execution_price = 9;
+
+  int64 grid_fee_per_kwh = 10;
+
+  int64 quantity = 11;
+
+  uint32 grid_rule_version = 12;
+
+  google.protobuf.Timestamp executed_at = 13;
+}
