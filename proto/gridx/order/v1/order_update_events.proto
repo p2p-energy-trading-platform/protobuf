@@ -15,6 +15,15 @@ enum OrderUpdateType {
   ORDER_EXPIRED = 5;
 }
 
+enum OrderStatus {
+  ORDER_STATUS_UNSPECIFIED = 0;
+  ORDER_STATUS_NEW = 1;
+  ORDER_STATUS_PARTIALLY_FILLED = 2;
+  ORDER_STATUS_FILLED = 3;
+  ORDER_STATUS_CANCELLED = 4;
+  ORDER_STATUS_EXPIRED = 5;
+}
+
 message OrderUpdated {
   string event_id = 1;
 
