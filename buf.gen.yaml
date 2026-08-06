@@ -19,6 +19,7 @@ plugins:
     out: gen/typescript
     opt:
       - target=ts
+      - import_extension=.js
 
   # C++ protobuf message types only
   - remote: buf.build/protocolbuffers/cpp:v35.0
