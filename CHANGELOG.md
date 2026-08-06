@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.1.0...v1.1.1) (2026-08-06)
+
+
+### Bug Fixes
+
+* add import extension for TypeScript protobuf generation ([#23](https://github.com/p2p-energy-trading-platform/protobuf/issues/23)) ([aa84941](https://github.com/p2p-energy-trading-platform/protobuf/commit/aa849418523ae0ecb34cf4a27dd84422d97d1fe4))
+
 ## [1.1.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.0.0...v1.1.0) (2026-08-06)
 
 
