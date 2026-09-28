@@ -15,6 +15,13 @@ plugins:
       - paths=source_relative
 
   # TypeScript protobuf message types
+  - remote: buf.build/bufbuild/es
+    out: gen/typescript
+    opt:
+      - target=ts
+      - import_extension=.js
+
+  # TypeScript Connect service definitions
   - remote: buf.build/connectrpc/es
     out: gen/typescript
     opt:
