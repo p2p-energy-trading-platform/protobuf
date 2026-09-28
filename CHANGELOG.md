@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.1.1...v1.2.0) (2026-09-28)
+
+
+### Features
+
+* add registration proto contract and fix typescript sdk build ([#25](https://github.com/p2p-energy-trading-platform/protobuf/issues/25)) ([987ad99](https://github.com/p2p-energy-trading-platform/protobuf/commit/987ad9964c591b0a3200eefe7ee2ed7eada86577))
+
 ## [1.1.1](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.1.0...v1.1.1) (2026-08-06)
 
 
