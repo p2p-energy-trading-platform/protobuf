@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.2.0...v1.2.1) (2026-09-28)
+
+
+### Bug Fixes
+
+* missing typescript message build ([#27](https://github.com/p2p-energy-trading-platform/protobuf/issues/27)) ([d8b982e](https://github.com/p2p-energy-trading-platform/protobuf/commit/d8b982e0db060249765cd3d147e07edf3f5f2158))
+
 ## [1.2.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.1.1...v1.2.0) (2026-09-28)
 
 
