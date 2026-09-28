@@ -15,7 +15,7 @@ plugins:
       - paths=source_relative
 
   # TypeScript protobuf message types
-  - remote: buf.build/bufbuild/es
+  - remote: buf.build/connectrpc/es
     out: gen/typescript
     opt:
       - target=ts
