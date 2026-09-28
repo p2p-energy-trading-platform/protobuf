@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package gridx.auth.v1;
+
+option go_package = "github.com/p2p-energy-trading-platform/go-sdk/gen/gridx/auth/v1;authv1";
+
+service AuthService {
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+}
+
+message RegisterRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message RegisterResponse {
+  string user_id = 1;
+  string email = 2;
+  string status = 3;
+  string created_at = 4;
+}
