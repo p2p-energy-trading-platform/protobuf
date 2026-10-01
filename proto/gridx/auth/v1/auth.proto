@@ -8,6 +8,7 @@ service AuthService {
   rpc Register(RegisterRequest) returns (RegisterResponse);
   rpc Login(LoginRequest) returns (LoginResponse);
   rpc Logout(LogoutRequest) returns (LogoutResponse);
+  rpc LogoutAll(LogoutAllRequest) returns (LogoutAllResponse);
 }
 
 message RegisterRequest {
@@ -40,5 +41,11 @@ message LogoutRequest {
 }
 
 message LogoutResponse {
+  bool success = 1;
+}
+
+message LogoutAllRequest {}
+
+message LogoutAllResponse {
   bool success = 1;
 }
