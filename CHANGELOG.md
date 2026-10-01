@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.3.0...v1.3.1) (2026-10-01)
+
+
+### Bug Fixes
+
+* edit test proto to stimulate minor patch bump to all sdk ([#31](https://github.com/p2p-energy-trading-platform/protobuf/issues/31)) ([dd9cdda](https://github.com/p2p-energy-trading-platform/protobuf/commit/dd9cdda967a0c8467df7457cecc539476efa9590))
+
 ## [1.3.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.2.1...v1.3.0) (2026-10-01)
 
 
