@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.2.1...v1.3.0) (2026-10-01)
+
+
+### Features
+
+* add login and logout contracts ([#29](https://github.com/p2p-energy-trading-platform/protobuf/issues/29)) ([d0d8bbd](https://github.com/p2p-energy-trading-platform/protobuf/commit/d0d8bbd2d433e5b40db5a9b42c29a0ff0beb5722))
+
 ## [1.2.1](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.2.0...v1.2.1) (2026-09-28)
 
 
