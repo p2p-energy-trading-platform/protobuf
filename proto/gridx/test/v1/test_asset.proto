@@ -16,4 +16,5 @@ message TestAsset {
   int64 price = 2;
   string type = 3;
   int32 test_price = 4;
+  string fix_bump = 5;
 }
