@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.5.0...v1.6.0) (2026-10-03)
+
+
+### Features
+
+* add user display name to auth contracts ([#37](https://github.com/p2p-energy-trading-platform/protobuf/issues/37)) ([6cfd57a](https://github.com/p2p-energy-trading-platform/protobuf/commit/6cfd57a0206648b636364aed28bb451a4f152df4))
+
 ## [1.5.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.4.0...v1.5.0) (2026-10-03)
 
 
