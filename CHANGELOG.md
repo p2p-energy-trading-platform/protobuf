@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.4.0...v1.5.0) (2026-10-03)
+
+
+### Features
+
+* add account management grpc contracts ([#35](https://github.com/p2p-energy-trading-platform/protobuf/issues/35)) ([b4cb7e1](https://github.com/p2p-energy-trading-platform/protobuf/commit/b4cb7e19ac1123d9a7d70053c5430c09d1ec4c14))
+
 ## [1.4.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.3.1...v1.4.0) (2026-10-01)
 
 
