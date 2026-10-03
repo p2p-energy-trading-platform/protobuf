@@ -51,3 +51,25 @@ message LogoutAllRequest {}
 message LogoutAllResponse {
   bool success = 1;
 }
+
+message GetUserRequest {
+  string user_id = 1;
+}
+
+message GetUserResponse {
+  string user_id = 1;
+  string email = 2;
+  string status = 3;
+  repeated string roles = 4;
+}
+
+
+message CheckPermissionRequest {
+  string user_id = 1;
+  string permission_name = 2;
+}
+
+
+message CheckPermissionResponse {
+  bool allowed = 1;
+}
