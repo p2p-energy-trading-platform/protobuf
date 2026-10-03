@@ -9,6 +9,8 @@ service AuthService {
   rpc Login(LoginRequest) returns (LoginResponse);
   rpc Logout(LogoutRequest) returns (LogoutResponse);
   rpc LogoutAll(LogoutAllRequest) returns (LogoutAllResponse);
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  rpc CheckPermission(CheckPermissionRequest) returns (CheckPermissionResponse);
 }
 
 message RegisterRequest {
