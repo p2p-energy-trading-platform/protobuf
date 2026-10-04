@@ -17,6 +17,8 @@ service AuthService {
   rpc ResetPassword(ResetPasswordRequest) returns (ResetPasswordResponse);
   rpc RequestEmailChange(RequestEmailChangeRequest) returns (RequestEmailChangeResponse);
   rpc VerifyEmailChange(VerifyEmailChangeRequest) returns (VerifyEmailChangeResponse);
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  rpc CheckPermission(CheckPermissionRequest) returns (CheckPermissionResponse);
 }
 
 message RegisterRequest {
@@ -130,4 +132,25 @@ message VerifyEmailChangeRequest {
 
 message VerifyEmailChangeResponse {
   UserProfile profile = 1;
+}
+
+message GetUserRequest {
+  string user_id = 1;
+}
+
+message GetUserResponse {
+  string user_id = 1;
+  string email = 2;
+  string status = 3;
+  string role = 4;
+  string name = 5;
+}
+
+message CheckPermissionRequest {
+  string user_id = 1;
+  string permission_name = 2;
+}
+
+message CheckPermissionResponse {
+  bool allowed = 1;
 }
