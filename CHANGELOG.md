@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.6.0...v1.7.0) (2026-10-04)
+
+
+### Features
+
+* add authorization request and response messages ([#39](https://github.com/p2p-energy-trading-platform/protobuf/issues/39)) ([7f60cd8](https://github.com/p2p-energy-trading-platform/protobuf/commit/7f60cd8fcfeb52c22ad25e89ec795926b001a5f4))
+
 ## [1.6.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.5.0...v1.6.0) (2026-10-03)
 
 
