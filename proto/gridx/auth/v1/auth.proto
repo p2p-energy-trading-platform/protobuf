@@ -145,12 +145,10 @@ message GetUserResponse {
   repeated string roles = 4;
 }
 
-
 message CheckPermissionRequest {
   string user_id = 1;
   string permission_name = 2;
 }
-
 
 message CheckPermissionResponse {
   bool allowed = 1;
