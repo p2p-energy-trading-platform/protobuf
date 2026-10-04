@@ -142,7 +142,8 @@ message GetUserResponse {
   string user_id = 1;
   string email = 2;
   string status = 3;
-  repeated string roles = 4;
+  string role = 4;
+  string name = 5;
 }
 
 
