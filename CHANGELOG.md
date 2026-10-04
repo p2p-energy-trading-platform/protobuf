@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.6.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.5.0...v1.6.0) (2026-10-03)
+
+
+### Features
+
+* add user display name to auth contracts ([#37](https://github.com/p2p-energy-trading-platform/protobuf/issues/37)) ([6cfd57a](https://github.com/p2p-energy-trading-platform/protobuf/commit/6cfd57a0206648b636364aed28bb451a4f152df4))
+
+## [1.5.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.4.0...v1.5.0) (2026-10-03)
+
+
+### Features
+
+* add account management grpc contracts ([#35](https://github.com/p2p-energy-trading-platform/protobuf/issues/35)) ([b4cb7e1](https://github.com/p2p-energy-trading-platform/protobuf/commit/b4cb7e19ac1123d9a7d70053c5430c09d1ec4c14))
+
 ## [1.4.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.3.1...v1.4.0) (2026-10-01)
 
 
