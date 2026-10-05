@@ -19,6 +19,8 @@ service AuthService {
   rpc VerifyEmailChange(VerifyEmailChangeRequest) returns (VerifyEmailChangeResponse);
   rpc GetUser(GetUserRequest) returns (GetUserResponse);
   rpc CheckPermission(CheckPermissionRequest) returns (CheckPermissionResponse);
+  rpc VerifyEmail(VerifyEmailRequest) returns (VerifyEmailResponse);
+  rpc ResendOtp(ResendOtpRequest) returns (ResendOtpResponse);
 
   rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
 }
@@ -144,6 +146,24 @@ message VerifyEmailChangeRequest {
 
 message VerifyEmailChangeResponse {
   UserProfile profile = 1;
+}
+
+message VerifyEmailRequest {
+  string email = 1;
+  string otp = 2;
+}
+
+message VerifyEmailResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message ResendOtpRequest {
+  string email = 1;
+}
+
+message ResendOtpResponse {
+  bool success = 1;
 }
 
 message GetUserRequest {
