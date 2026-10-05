@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.8.0...v1.9.0) (2026-10-05)
+
+
+### Features
+
+* add verify email and otp rpc calls ([#43](https://github.com/p2p-energy-trading-platform/protobuf/issues/43)) ([4587570](https://github.com/p2p-energy-trading-platform/protobuf/commit/4587570a0ddab06add5ebdee2d2f4d8669f5b7eb))
+
 ## [1.8.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.7.0...v1.8.0) (2026-10-05)
 
 
