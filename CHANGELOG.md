@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.7.0...v1.8.0) (2026-10-05)
+
+
+### Features
+
+* add refresh token rpc ([#41](https://github.com/p2p-energy-trading-platform/protobuf/issues/41)) ([fc96ecc](https://github.com/p2p-energy-trading-platform/protobuf/commit/fc96ecc644040da0c8a3469bcc44c8f1878fb0fb))
+
 ## [1.7.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.6.0...v1.7.0) (2026-10-04)
 
 
