@@ -19,6 +19,8 @@ service AuthService {
   rpc VerifyEmailChange(VerifyEmailChangeRequest) returns (VerifyEmailChangeResponse);
   rpc GetUser(GetUserRequest) returns (GetUserResponse);
   rpc CheckPermission(CheckPermissionRequest) returns (CheckPermissionResponse);
+
+  rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
 }
 
 message RegisterRequest {
@@ -45,6 +47,16 @@ message LoginResponse {
   string access_token = 3;
   string refresh_token = 4;
   int64 expires_in = 5;
+}
+
+message RefreshTokenRequest {
+  string refresh_token = 1;
+}
+
+message RefreshTokenResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+  int32 expires_in = 3;
 }
 
 message LogoutRequest {
