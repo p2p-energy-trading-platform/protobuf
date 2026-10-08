@@ -21,6 +21,7 @@ service AuthService {
   rpc CheckPermission(CheckPermissionRequest) returns (CheckPermissionResponse);
   rpc VerifyEmail(VerifyEmailRequest) returns (VerifyEmailResponse);
   rpc ResendOtp(ResendOtpRequest) returns (ResendOtpResponse);
+  rpc SubmitKyc(SubmitKycRequest) returns (SubmitKycResponse);
 
   rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
 }
@@ -185,4 +186,29 @@ message CheckPermissionRequest {
 
 message CheckPermissionResponse {
   bool allowed = 1;
+}
+
+message SubmitKycRequest {
+  string full_name = 1;
+  string date_of_birth = 2;
+  string dubai_id = 3;
+  string document_path = 4;
+}
+
+message SubmitKycResponse {
+  KycSubmission submission = 1;
+}
+
+message KycSubmission {
+  string id = 1;
+  string user_id = 2;
+  string full_name = 3;
+  string date_of_birth = 4;
+  string dubai_id = 5;
+  string document_path = 6;
+  string state = 7;
+  string rejection_reason = 8;
+  string verified_at = 9;
+  string created_at = 10;
+  string updated_at = 11;
 }
