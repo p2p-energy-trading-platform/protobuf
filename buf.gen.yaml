@@ -1,6 +1,10 @@
 version: v2
 clean: true
 
+inputs:
+  - directory: proto
+  - module: buf.build/googleapis/googleapis
+
 plugins:
   # Go protobuf message types
   - remote: buf.build/protocolbuffers/go
