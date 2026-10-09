@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.1](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.10.0...v1.10.1) (2026-10-09)
+
+
+### Bug Fixes
+
+* include google deps ([#47](https://github.com/p2p-energy-trading-platform/protobuf/issues/47)) ([070b97c](https://github.com/p2p-energy-trading-platform/protobuf/commit/070b97cb268edb73342141d86f6ecc2dc87203fd))
+
 ## [1.10.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.9.0...v1.10.0) (2026-10-09)
 
 
