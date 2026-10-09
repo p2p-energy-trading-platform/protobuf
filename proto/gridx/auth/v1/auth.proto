@@ -38,8 +38,9 @@ message RegisterResponse {
   string user_id = 1;
   string email = 2;
   string status = 3;
-  string created_at = 4;
+  string created_at = 4 [deprecated = true];
   string name = 5;
+  google.protobuf.Timestamp created_at_time = 6;
 }
 
 message LoginRequest {
@@ -89,8 +90,9 @@ message UserProfile {
   reserved "first_name", "last_name";
 
   string status = 5;
-  string created_at = 6;
+  string created_at = 6 [deprecated = true];
   string name = 7;
+  google.protobuf.Timestamp created_at_time = 8;
 }
 
 message GetProfileRequest {}
