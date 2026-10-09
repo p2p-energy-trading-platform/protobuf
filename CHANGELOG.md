@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.2](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.10.1...v1.10.2) (2026-10-09)
+
+
+### Bug Fixes
+
+* deprecated changes for created_at ([#49](https://github.com/p2p-energy-trading-platform/protobuf/issues/49)) ([c175deb](https://github.com/p2p-energy-trading-platform/protobuf/commit/c175debf5988338dc042ba7cfe8260819bb96cf7))
+
 ## [1.10.1](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.10.0...v1.10.1) (2026-10-09)
 
 
