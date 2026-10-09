@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.9.0...v1.10.0) (2026-10-09)
+
+
+### Features
+
+* **auth:** add KYC submission RPC ([#45](https://github.com/p2p-energy-trading-platform/protobuf/issues/45)) ([d67dee7](https://github.com/p2p-energy-trading-platform/protobuf/commit/d67dee7360269c5e4071f5ba609b045df6753df2))
+
 ## [1.9.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.8.0...v1.9.0) (2026-10-05)
 
 
