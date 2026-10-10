@@ -41,6 +41,9 @@ message RegisterResponse {
   string created_at = 4 [deprecated = true];
   string name = 5;
   google.protobuf.Timestamp created_at_time = 6;
+  string access_token = 7;
+  string refresh_token = 8;
+  int64 expires_in = 9;
 }
 
 message LoginRequest {
