@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.10.2...v1.11.0) (2026-10-10)
+
+
+### Features
+
+* update register response schema ([#51](https://github.com/p2p-energy-trading-platform/protobuf/issues/51)) ([e82e48c](https://github.com/p2p-energy-trading-platform/protobuf/commit/e82e48c468860d34a66fe87b4688c5bbcfce2e0d))
+
 ## [1.10.2](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.10.1...v1.10.2) (2026-10-09)
 
 
