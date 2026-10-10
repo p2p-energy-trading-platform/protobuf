@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.11.0...v1.12.0) (2026-10-10)
+
+
+### Features
+
+* add name field to RegisterRequest message ([#53](https://github.com/p2p-energy-trading-platform/protobuf/issues/53)) ([38605ba](https://github.com/p2p-energy-trading-platform/protobuf/commit/38605ba81e3e97f3706df9334ef604a004c2ecce))
+
 ## [1.11.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.10.2...v1.11.0) (2026-10-10)
 
 
