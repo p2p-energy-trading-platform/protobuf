@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.12.0...v1.13.0) (2026-10-12)
+
+
+### Features
+
+* login with google rpc ([#55](https://github.com/p2p-energy-trading-platform/protobuf/issues/55)) ([360a466](https://github.com/p2p-energy-trading-platform/protobuf/commit/360a466177f96b7baabc9458ecabedc1dd9409fa))
+
 ## [1.12.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.11.0...v1.12.0) (2026-10-10)
 
 
