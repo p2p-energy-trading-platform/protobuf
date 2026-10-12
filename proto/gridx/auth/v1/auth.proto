@@ -27,6 +27,7 @@ service AuthService {
   rpc SubmitKyc(SubmitKycRequest) returns (SubmitKycResponse);
 
   rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
+  rpc LoginWithGoogle(LoginWithGoogleRequest) returns (LoginWithGoogleResponse);
 }
 
 message RegisterRequest {
@@ -227,4 +228,20 @@ message KycSubmission {
   google.protobuf.Timestamp verified_at = 9;
   google.protobuf.Timestamp created_at = 10;
   google.protobuf.Timestamp updated_at = 11;
+}
+
+message LoginWithGoogleRequest {
+  string code = 1;
+  string code_verifier = 2;
+  string redirect_uri = 3;
+  string nonce = 4;
+}
+
+message LoginWithGoogleResponse {
+  string user_id = 1;
+  string email = 2;
+  string access_token = 3;
+  string refresh_token = 4;
+  int64 expires_in = 5;
+  bool is_new_user = 6;
 }
