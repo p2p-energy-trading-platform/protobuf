@@ -13,6 +13,8 @@ service AuthService {
   rpc Logout(LogoutRequest) returns (LogoutResponse);
   rpc LogoutAll(LogoutAllRequest) returns (LogoutAllResponse);
 
+  rpc CreateKycUploadUrl(CreateKycUploadUrlRequest) returns (CreateKycUploadUrlResponse);
+
   rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
   rpc UpdateProfile(UpdateProfileRequest) returns (UpdateProfileResponse);
   rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse);
@@ -83,6 +85,17 @@ message LogoutAllRequest {}
 
 message LogoutAllResponse {
   bool success = 1;
+}
+
+message CreateKycUploadUrlRequest {
+  string content_type = 1;
+  int64 size_bytes = 2;
+}
+
+message CreateKycUploadUrlResponse {
+  string upload_url = 1;
+  string object_key = 2;
+  int64 expires_in = 3;
 }
 
 // Account management
