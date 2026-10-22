@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.14.0...v1.15.0) (2026-10-22)
+
+
+### Features
+
+* add Sri Lankan NIC OCR KYC RPC ([#59](https://github.com/p2p-energy-trading-platform/protobuf/issues/59)) ([caba494](https://github.com/p2p-energy-trading-platform/protobuf/commit/caba4948a9e08f476d88cdcde5cf208cc3ebef16))
+
 ## [1.14.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.13.0...v1.14.0) (2026-10-12)
 
 
