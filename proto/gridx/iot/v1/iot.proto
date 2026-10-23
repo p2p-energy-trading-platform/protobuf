@@ -1,0 +1,189 @@
+syntax = "proto3";
+
+package gridx.iot.v1;
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/p2p-energy-trading-platform/go-sdk/gen/gridx/iot/v1;iotv1";
+
+// IotService exposes read access to houses, their assets and their metered
+// energy data. Every house-scoped request accepts an optional owner_user_id:
+// when set, the house must belong to that user or the call fails with
+// NOT_FOUND; when empty, no ownership check is made (service-to-service use).
+service IotService {
+  rpc ListHouses(ListHousesRequest) returns (ListHousesResponse);
+  rpc GetHouse(GetHouseRequest) returns (GetHouseResponse);
+  rpc GetLatestReading(GetLatestReadingRequest) returns (GetLatestReadingResponse);
+  rpc GetEnergySeries(GetEnergySeriesRequest) returns (GetEnergySeriesResponse);
+  rpc GetEnergySummary(GetEnergySummaryRequest) returns (GetEnergySummaryResponse);
+}
+
+enum DeviceClass {
+  DEVICE_CLASS_UNSPECIFIED = 0;
+  DEVICE_CLASS_CONSUMER = 1;
+  DEVICE_CLASS_RESIDENTIAL_PROSUMER = 2;
+  DEVICE_CLASS_COMMERCIAL = 3;
+}
+
+enum AssetType {
+  ASSET_TYPE_UNSPECIFIED = 0;
+  ASSET_TYPE_BESS = 1;
+  ASSET_TYPE_EV = 2;
+}
+
+enum MeterStatus {
+  METER_STATUS_UNSPECIFIED = 0;
+  METER_STATUS_ONLINE = 1;
+  METER_STATUS_OFFLINE = 2;
+}
+
+message Grid {
+  string grid_id = 1;
+  string display_name = 2;
+}
+
+message House {
+  string house_id = 1;
+  Grid grid = 2;
+  string meter_id = 3;
+  DeviceClass device_class = 4;
+  optional double rated_solar_kw = 5;
+  MeterStatus meter_status = 6;
+  // Unset when no heartbeat is held in the liveness window.
+  google.protobuf.Timestamp last_heartbeat_at = 7;
+}
+
+message FlexibleAsset {
+  string asset_id = 1;
+  AssetType asset_type = 2;
+  double capacity_kwh = 3;
+  double max_charge_kw = 4;
+  double max_discharge_kw = 5;
+  // Set only for EVs.
+  optional bool v2g_capable = 6;
+}
+
+message StorageAssetReading {
+  string asset_id = 1;
+  AssetType asset_type = 2;
+  double soc_pct = 3;
+  // Positive while charging, negative while discharging.
+  double power_kw = 4;
+  double capacity_kwh = 5;
+  // Set only for EVs.
+  optional bool plugged_in = 6;
+}
+
+message MeterReading {
+  string meter_id = 1;
+  google.protobuf.Timestamp measured_at = 2;
+  int64 seq = 3;
+  double solar_kw = 4;
+  double consumption_kw = 5;
+  // solar - consumption - sum(storage power). Positive exports, negative imports.
+  double net_kw = 6;
+  repeated StorageAssetReading storage_assets = 7;
+}
+
+message EnergyTotals {
+  double generated_kwh = 1;
+  double consumed_kwh = 2;
+  double exported_kwh = 3;
+  double imported_kwh = 4;
+  double storage_charged_kwh = 5;
+  double storage_discharged_kwh = 6;
+}
+
+message EnergyFlows {
+  double solar_to_home_kwh = 1;
+  double solar_to_storage_kwh = 2;
+  double solar_to_grid_kwh = 3;
+  double grid_to_home_kwh = 4;
+  double grid_to_storage_kwh = 5;
+  double storage_to_home_kwh = 6;
+  double storage_to_grid_kwh = 7;
+}
+
+message AveragePower {
+  double solar_kw = 1;
+  double consumption_kw = 2;
+  double export_kw = 3;
+  double import_kw = 4;
+}
+
+message EnergyBucket {
+  google.protobuf.Timestamp starts_at = 1;
+  EnergyTotals energy = 2;
+  // Time-weighted over the readings in the bucket; zero when it has none.
+  AveragePower average_power = 3;
+}
+
+message PeakDemand {
+  double consumption_kw = 1;
+  google.protobuf.Timestamp occurred_at = 2;
+}
+
+message ListHousesRequest {
+  string owner_user_id = 1;
+  string grid_id = 2;
+  // Default 50, maximum 200.
+  int32 page_size = 3;
+  string page_token = 4;
+}
+
+message ListHousesResponse {
+  repeated House houses = 1;
+  string next_page_token = 2;
+}
+
+message GetHouseRequest {
+  string house_id = 1;
+  string owner_user_id = 2;
+}
+
+message GetHouseResponse {
+  House house = 1;
+  repeated FlexibleAsset flexible_assets = 2;
+}
+
+message GetLatestReadingRequest {
+  string house_id = 1;
+  string owner_user_id = 2;
+}
+
+message GetLatestReadingResponse {
+  MeterReading reading = 1;
+}
+
+message GetEnergySeriesRequest {
+  string house_id = 1;
+  string owner_user_id = 2;
+  google.protobuf.Timestamp start_time = 3;
+  google.protobuf.Timestamp end_time = 4;
+  // Between 5 minutes and 1 day.
+  google.protobuf.Duration bucket_width = 5;
+  // IANA name used to align buckets (for example day buckets at local
+  // midnight). Empty means UTC.
+  string time_zone = 6;
+}
+
+message GetEnergySeriesResponse {
+  repeated EnergyBucket buckets = 1;
+}
+
+message GetEnergySummaryRequest {
+  string house_id = 1;
+  string owner_user_id = 2;
+  google.protobuf.Timestamp start_time = 3;
+  google.protobuf.Timestamp end_time = 4;
+}
+
+message GetEnergySummaryResponse {
+  EnergyTotals totals = 1;
+  EnergyFlows flows = 2;
+  // (generated - solar_to_grid) / generated * 100. Unset when nothing was generated.
+  optional double self_consumption_pct = 3;
+  // Unset when the range has no readings.
+  PeakDemand peak_demand = 4;
+}
