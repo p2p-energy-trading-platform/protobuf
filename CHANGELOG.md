@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.15.0...v1.16.0) (2026-10-23)
+
+
+### Features
+
+* add IoT read service contract ([#61](https://github.com/p2p-energy-trading-platform/protobuf/issues/61)) ([6dbc2d3](https://github.com/p2p-energy-trading-platform/protobuf/commit/6dbc2d3cd11aeb1d16e39da5463faa091cb502ec))
+
 ## [1.15.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.14.0...v1.15.0) (2026-10-22)
 
 
