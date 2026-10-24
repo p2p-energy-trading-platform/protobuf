@@ -19,6 +19,16 @@ service IotService {
   rpc GetEnergySummary(GetEnergySummaryRequest) returns (GetEnergySummaryResponse);
 }
 
+service DeviceRegistrationService {
+
+  rpc InitiateMeterClaim(ClaimMeterRequest) returns (ClaimMeterResponse);
+  rpc GetRegistrationStatus(GetStatusRequest) returns (GetStatusResponse);
+  rpc ValidateDeviceAssociation(ValidateDeviceRequest) returns (ValidateDeviceResponse);
+  rpc ReverifyRegistration(ReverifyRequest) returns (ReverifyResponse);
+
+}
+
+
 enum DeviceClass {
   DEVICE_CLASS_UNSPECIFIED = 0;
   DEVICE_CLASS_CONSUMER = 1;
@@ -186,4 +196,48 @@ message GetEnergySummaryResponse {
   optional double self_consumption_pct = 3;
   // Unset when the range has no readings.
   PeakDemand peak_demand = 4;
+}
+
+message ClaimMeterRequest {
+  string user_reference = 1;
+  string meter_id = 2;
+}
+
+message ClaimMeterResponse {
+  string registration_id = 1;
+  string status = 2;
+}
+
+message GetStatusRequest {
+  string registration_id = 1;
+}
+
+message GetStatusResponse {
+  string registration_id = 1;
+  string meter_id = 2;
+  string approval_status = 3;
+}
+
+message ValidateDeviceRequest {
+  string meter_id = 1;
+}
+
+message ValidateDeviceResponse {
+  bool is_registered = 2;
+  string primary_user_id = 3;
+}
+
+
+message ReverifyRequest {
+  string registration_id = 1;
+  string user_reference = 2;
+}
+
+message ReverifyResponse {
+  string registration_id = 1;
+  string meter_id = 2;
+  string previous_status = 3;
+  string current_status = 4;
+  bool success = 5;
+  string message = 6;
 }
