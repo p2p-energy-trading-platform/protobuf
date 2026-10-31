@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.17.1](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.17.0...v1.17.1) (2026-10-31)
+
+
+### Bug Fixes
+
+* missing fields ([#65](https://github.com/p2p-energy-trading-platform/protobuf/issues/65)) ([2b3d7c0](https://github.com/p2p-energy-trading-platform/protobuf/commit/2b3d7c069e972ecfd528d75dfdd611c9dc15bd8f))
+
 ## [1.17.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.16.0...v1.17.0) (2026-10-31)
 
 
