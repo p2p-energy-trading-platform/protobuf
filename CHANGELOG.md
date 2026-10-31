@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.17.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.16.0...v1.17.0) (2026-10-31)
+
+
+### Features
+
+* add device registration gRPC protobuf definitions ([#63](https://github.com/p2p-energy-trading-platform/protobuf/issues/63)) ([4824a05](https://github.com/p2p-energy-trading-platform/protobuf/commit/4824a0592770da37420b81bc012fbdf858d92a1b))
+
 ## [1.16.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.15.0...v1.16.0) (2026-10-23)
 
 
