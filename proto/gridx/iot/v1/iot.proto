@@ -20,12 +20,10 @@ service IotService {
 }
 
 service DeviceRegistrationService {
-
   rpc InitiateMeterClaim(ClaimMeterRequest) returns (ClaimMeterResponse);
   rpc GetRegistrationStatus(GetStatusRequest) returns (GetStatusResponse);
   rpc ValidateDeviceAssociation(ValidateDeviceRequest) returns (ValidateDeviceResponse);
   rpc ReverifyRegistration(ReverifyRequest) returns (ReverifyResponse);
-
 }
 
 
@@ -198,6 +196,7 @@ message GetEnergySummaryResponse {
   PeakDemand peak_demand = 4;
 }
 
+// Initiates a new smart meter registration request.
 message ClaimMeterRequest {
   string user_reference = 1;
   string meter_id = 2;
@@ -208,6 +207,7 @@ message ClaimMeterResponse {
   string status = 2;
 }
 
+// Retrieves the current registration status.
 message GetStatusRequest {
   string registration_id = 1;
 }
@@ -218,6 +218,7 @@ message GetStatusResponse {
   string approval_status = 3;
 }
 
+// Validates whether a smart meter is registered.
 message ValidateDeviceRequest {
   string meter_id = 1;
 }
@@ -227,7 +228,7 @@ message ValidateDeviceResponse {
   string primary_user_id = 3;
 }
 
-
+// Requests reverification of an existing registration.
 message ReverifyRequest {
   string registration_id = 1;
   string user_reference = 2;
