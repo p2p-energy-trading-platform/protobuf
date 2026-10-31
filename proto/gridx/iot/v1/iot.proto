@@ -19,6 +19,14 @@ service IotService {
   rpc GetEnergySummary(GetEnergySummaryRequest) returns (GetEnergySummaryResponse);
 }
 
+service DeviceRegistrationService {
+  rpc InitiateMeterClaim(InitiateMeterClaimRequest) returns (InitiateMeterClaimResponse);
+  rpc GetRegistrationStatus(GetRegistrationStatusRequest) returns (GetRegistrationStatusResponse);
+  rpc ValidateDeviceAssociation(ValidateDeviceAssociationRequest) returns (ValidateDeviceAssociationResponse);
+  rpc ReverifyRegistration(ReverifyRegistrationRequest) returns (ReverifyRegistrationResponse);
+  rpc GetRegistrationByUser(GetRegistrationByUserRequest) returns (GetRegistrationByUserResponse);
+}
+
 enum DeviceClass {
   DEVICE_CLASS_UNSPECIFIED = 0;
   DEVICE_CLASS_CONSUMER = 1;
@@ -186,4 +194,60 @@ message GetEnergySummaryResponse {
   optional double self_consumption_pct = 3;
   // Unset when the range has no readings.
   PeakDemand peak_demand = 4;
+}
+
+// Initiates a new smart meter registration request.
+message InitiateMeterClaimRequest {
+  string user_reference = 1;
+  string meter_id = 2;
+}
+
+message InitiateMeterClaimResponse {
+  string registration_id = 1;
+  string status = 2;
+  string message = 3;
+}
+
+// Retrieves the current registration status.
+message GetRegistrationStatusRequest {
+  string registration_id = 1;
+}
+
+message GetRegistrationStatusResponse {
+  string registration_id = 1;
+  string meter_id = 2;
+  string approval_status = 3;
+}
+
+// Validates whether a smart meter is registered.
+message ValidateDeviceAssociationRequest {
+  string meter_id = 1;
+}
+
+message ValidateDeviceAssociationResponse {
+  bool is_registered = 2;
+  string primary_user_id = 3;
+}
+
+// Requests reverification of an existing registration.
+message ReverifyRegistrationRequest {
+  string registration_id = 1;
+  string user_reference = 2;
+}
+
+message ReverifyRegistrationResponse {
+  string registration_id = 1;
+  string meter_id = 2;
+  string message = 3;
+}
+
+message GetRegistrationByUserRequest {
+  string user_reference = 1;
+}
+
+message GetRegistrationByUserResponse {
+  bool has_meter = 1;
+  string registration_id = 2;
+  string meter_id = 3;
+  string approval_status = 4;
 }
