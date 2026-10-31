@@ -233,12 +233,14 @@ message ValidateDeviceAssociationResponse {
 message ReverifyRegistrationRequest {
   string registration_id = 1;
   string user_reference = 2;
+  string meter_id = 3;
 }
 
 message ReverifyRegistrationResponse {
   string registration_id = 1;
   string meter_id = 2;
   string message = 3;
+  string status = 4;
 }
 
 message GetRegistrationByUserRequest {
