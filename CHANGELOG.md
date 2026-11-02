@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.17.1...v1.18.0) (2026-11-02)
+
+
+### Features
+
+* add billing wallet service contract ([#67](https://github.com/p2p-energy-trading-platform/protobuf/issues/67)) ([056d112](https://github.com/p2p-energy-trading-platform/protobuf/commit/056d1126af1998441d7ab3e2eccd0772bce9698d))
+
 ## [1.17.1](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.17.0...v1.17.1) (2026-10-31)
 
 
