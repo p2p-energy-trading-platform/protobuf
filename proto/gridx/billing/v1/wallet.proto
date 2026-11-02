@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package gridx.billing.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/p2p-energy-trading-platform/go-sdk/gen/gridx/billing/v1;billingv1";
+
+// WalletService is called by the API Gateway only. The gateway authenticates the
+// user and passes their id in the x-gridx-user-id metadata, so requests carry no
+// user id of their own.
+service WalletService {
+  // Returns the caller's wallet, creating an empty one on first use.
+  rpc GetWallet(GetWalletRequest) returns (GetWalletResponse);
+}
+
+enum WalletStatus {
+  WALLET_STATUS_UNSPECIFIED = 0;
+  WALLET_STATUS_ACTIVE = 1;
+  // Rejects reserve and withdraw while a dispute is open.
+  WALLET_STATUS_FROZEN = 2;
+  WALLET_STATUS_CLOSED = 3;
+}
+
+// All amounts are minor units: 1 credit = 100 units.
+message Wallet {
+  string wallet_id = 1;
+  string user_id = 2;
+  int64 available = 3;
+  int64 reserved = 4;
+  int64 total = 5;
+  WalletStatus status = 6;
+  google.protobuf.Timestamp updated_at = 7;
+}
+
+message GetWalletRequest {}
+
+message GetWalletResponse {
+  Wallet wallet = 1;
+}
