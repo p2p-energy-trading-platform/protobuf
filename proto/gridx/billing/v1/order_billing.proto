@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package gridx.billing.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/p2p-energy-trading-platform/go-sdk/gen/gridx/billing/v1;billingv1";
+
+// OrderBillingService is called by the Order Management Service only. Billing
+// computes all money from quantity and price, so OMS cannot drift from billing's
+// rounding rules.
+service OrderBillingService {
+  // Locks credits for a buy order. Idempotent on order_id. Sell orders need no
+  // reservation, because the seller fee comes out of proceeds.
+  rpc ReserveCredits(ReserveCreditsRequest) returns (ReserveCreditsResponse);
+  // Returns whatever is left of a reservation to the user. Idempotent on order_id.
+  rpc ReleaseReservation(ReleaseReservationRequest) returns (ReleaseReservationResponse);
+}
+
+enum OrderType {
+  ORDER_TYPE_UNSPECIFIED = 0;
+  ORDER_TYPE_LIMIT = 1;
+  ORDER_TYPE_MARKET = 2;
+}
+
+enum ReleaseReason {
+  RELEASE_REASON_UNSPECIFIED = 0;
+  RELEASE_REASON_CANCELLED = 1;
+  RELEASE_REASON_EXPIRED = 2;
+  RELEASE_REASON_FILLED = 3;
+  RELEASE_REASON_REJECTED = 4;
+}
+
+// All amounts are minor units: 1 credit = 100 units.
+message ReserveCreditsRequest {
+  string user_id = 1;
+  string order_id = 2;
+  OrderType order_type = 3;
+  int64 qty_wh = 4;
+  // LIMIT: the order's limit price.
+  // MARKET: the price collar, the worst price the buyer accepts. Required, set by
+  // OMS. The matching engine must never fill the order above this price.
+  int64 max_price_per_kwh = 5;
+  // Optional safety-net expiry.
+  google.protobuf.Timestamp expires_at = 6;
+}
+
+message ReserveCreditsResponse {
+  string hold_id = 1;
+  int64 reserved_amount = 2;
+  // The wallet's available balance now. On a replay this is the current balance,
+  // not the balance when the hold was first created.
+  int64 available_after = 3;
+}
+
+message ReleaseReservationRequest {
+  string order_id = 1;
+  ReleaseReason reason = 2;
+}
+
+message ReleaseReservationResponse {
+  // 0 if the reservation was already released or fully consumed.
+  int64 released_amount = 1;
+}
