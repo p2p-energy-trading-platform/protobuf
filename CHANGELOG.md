@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.18.0...v1.19.0) (2026-11-04)
+
+
+### Features
+
+* add order billing reservation contract ([#69](https://github.com/p2p-energy-trading-platform/protobuf/issues/69)) ([9e84d26](https://github.com/p2p-energy-trading-platform/protobuf/commit/9e84d267a5cef71d8705bf287be6bcf5b1b3bc7d))
+
 ## [1.18.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.17.1...v1.18.0) (2026-11-02)
 
 
