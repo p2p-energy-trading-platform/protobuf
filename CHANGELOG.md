@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.20.0...v1.21.0) (2026-11-09)
+
+
+### Features
+
+* add admin fee configuration contract ([#73](https://github.com/p2p-energy-trading-platform/protobuf/issues/73)) ([0cc1e64](https://github.com/p2p-energy-trading-platform/protobuf/commit/0cc1e643d8b39f3ad55aac97228934db166f0de8))
+
 ## [1.20.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.19.0...v1.20.0) (2026-11-09)
 
 
