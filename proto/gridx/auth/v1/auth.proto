@@ -201,6 +201,7 @@ message GetUserResponse {
   string status = 3;
   string role = 4;
   string name = 5;
+  KycState kyc_state = 6;
 }
 
 message CheckPermissionRequest {
