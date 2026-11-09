@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package gridx.billing.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/p2p-energy-trading-platform/go-sdk/gen/gridx/billing/v1;billingv1";
+
+// AdminBillingService is called by the API Gateway for admin users only. The
+// gateway verifies the admin role and passes the actor in the x-gridx-user-id and
+// x-user-role metadata, and billing checks both.
+service AdminBillingService {
+  // Adds a new fee configuration. Existing ones are never edited. A rate change
+  // applies to new buy reservations and to sell-side settlements from
+  // effective_from. Open buy orders keep their locked buyer rate.
+  rpc SetFeeConfig(SetFeeConfigRequest) returns (SetFeeConfigResponse);
+}
+
+message FeeConfig {
+  string fee_config_id = 1;
+  int32 buyer_fee_bps = 2;
+  int32 seller_fee_bps = 3;
+  google.protobuf.Timestamp effective_from = 4;
+  string created_by = 5;
+  google.protobuf.Timestamp created_at = 6;
+}
+
+message SetFeeConfigRequest {
+  string idempotency_key = 1;
+  // Basis points from 0 to 2000. Both are required, and 0 is a valid rate, so they
+  // are optional fields to tell an unset rate from a zero one.
+  optional int32 buyer_fee_bps = 2;
+  optional int32 seller_fee_bps = 3;
+  // When the rates start to apply. Must be in the future. Defaults to now.
+  google.protobuf.Timestamp effective_from = 4;
+}
+
+message SetFeeConfigResponse {
+  FeeConfig fee_config = 1;
+}
