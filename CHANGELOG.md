@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.20.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.19.0...v1.20.0) (2026-11-09)
+
+
+### Features
+
+* include KYC state in get user response ([#71](https://github.com/p2p-energy-trading-platform/protobuf/issues/71)) ([b851fd0](https://github.com/p2p-energy-trading-platform/protobuf/commit/b851fd0c0e343d8e60b97f407caccbd6ac81322a))
+
 ## [1.19.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.18.0...v1.19.0) (2026-11-04)
 
 
