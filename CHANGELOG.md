@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.21.0...v1.22.0) (2026-11-10)
+
+
+### Features
+
+* add SettleTrade to the order billing contract ([#75](https://github.com/p2p-energy-trading-platform/protobuf/issues/75)) ([f9cfdc5](https://github.com/p2p-energy-trading-platform/protobuf/commit/f9cfdc59ad2c5e849b879a2e6d2f54d57704f41c))
+
 ## [1.21.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.20.0...v1.21.0) (2026-11-09)
 
 
