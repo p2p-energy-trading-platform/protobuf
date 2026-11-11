@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.23.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.22.0...v1.23.0) (2026-11-11)
+
+
+### Features
+
+* use Auth Service UUIDs for user IDs in trade and order events ([#77](https://github.com/p2p-energy-trading-platform/protobuf/issues/77)) ([624414c](https://github.com/p2p-energy-trading-platform/protobuf/commit/624414c4fe9e62a6b71a6f04415be5e8f45c10b0))
+
 ## [1.22.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.21.0...v1.22.0) (2026-11-10)
 
 
