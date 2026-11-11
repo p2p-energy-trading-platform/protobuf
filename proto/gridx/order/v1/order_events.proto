@@ -31,10 +31,14 @@ message MarketId {
 }
 
 message OrderAccepted {
+  // Former uint64 user_id, replaced by the UUID user_id (field 14).
+  reserved 3;
+
   string event_id = 1;
 
   uint64 order_id = 2;
-  uint64 user_id = 3;
+
+  string user_id = 14;
 
   MarketId market_id = 4;
   uint32 grid_zone_id = 5;
@@ -43,8 +47,11 @@ message OrderAccepted {
   OrderType order_type = 7;
   OrderStatus status = 8;
 
+  // Limit price, in micro-AED per kWh (1 AED = 1,000,000 micro-AED).
   int64 price = 9;
+  // Order quantity, in Wh (1 kWh = 1,000 Wh).
   int64 quantity = 10;
+  // Unfilled quantity, in Wh (1 kWh = 1,000 Wh).
   double remaining_quantity = 11;
 
   google.protobuf.Timestamp expires_at = 12;
