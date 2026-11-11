@@ -7,6 +7,10 @@ import "google/protobuf/timestamp.proto";
 option go_package = "github.com/p2p-energy-trading-platform/go-sdk/gen/gridx/trade/v1;tradev1";
 
 message TradeExecuted {
+  // Former uint64 buyer_id / seller_id, replaced by UUID user IDs (fields 14, 15).
+  reserved 5, 6;
+  reserved "buyer_id", "seller_id";
+
   string event_id = 1;
 
   uint64 trade_id = 2;
@@ -14,16 +18,19 @@ message TradeExecuted {
   uint64 buy_order_id = 3;
   uint64 sell_order_id = 4;
 
-  uint64 buyer_id = 5;
-  uint64 seller_id = 6;
+  string buyer_user_id = 14;
+  string seller_user_id = 15;
 
   uint32 buyer_grid_zone_id = 7;
   uint32 seller_grid_zone_id = 8;
 
+  // Energy price paid to the seller, in micro-AED per kWh (1 AED = 1,000,000 micro-AED).
   int64 execution_price = 9;
 
+  // Grid transfer fee charged to the buyer, in micro-AED per kWh (1 AED = 1,000,000 micro-AED).
   int64 grid_fee_per_kwh = 10;
 
+  // Traded energy, in Wh (1 kWh = 1,000 Wh).
   int64 quantity = 11;
 
   uint32 grid_rule_version = 12;
