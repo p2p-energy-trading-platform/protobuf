@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.24.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.23.0...v1.24.0) (2026-11-13)
+
+
+### Features
+
+* add owner and original quantity to OrderUpdated ([#79](https://github.com/p2p-energy-trading-platform/protobuf/issues/79)) ([2dc2fc7](https://github.com/p2p-energy-trading-platform/protobuf/commit/2dc2fc7493175697366edeb4c934d01f17f15e23))
+
 ## [1.23.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.22.0...v1.23.0) (2026-11-11)
 
 
