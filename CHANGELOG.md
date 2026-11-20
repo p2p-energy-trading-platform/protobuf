@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.25.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.24.0...v1.25.0) (2026-11-20)
+
+
+### Features
+
+* add StreamHouseLive server-streaming RPC to IotService ([#81](https://github.com/p2p-energy-trading-platform/protobuf/issues/81)) ([4c7e712](https://github.com/p2p-energy-trading-platform/protobuf/commit/4c7e712332f7ad1b2ca3a5c9baaff6004cc928c3))
+
 ## [1.24.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.23.0...v1.24.0) (2026-11-13)
 
 
