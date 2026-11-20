@@ -17,6 +17,15 @@ service IotService {
   rpc GetLatestReading(GetLatestReadingRequest) returns (GetLatestReadingResponse);
   rpc GetEnergySeries(GetEnergySeriesRequest) returns (GetEnergySeriesResponse);
   rpc GetEnergySummary(GetEnergySummaryRequest) returns (GetEnergySummaryResponse);
+  // Streams live updates for one house: first the current status and latest
+  // reading (if any), then each newer reading and every meter status change.
+  // Delivery is best effort with no replay; callers resync over the unary RPCs.
+  // The server ends the stream after its maximum age; callers reopen it.
+  // Errors: INVALID_ARGUMENT (bad house ID), NOT_FOUND (unknown house, or not
+  // owned when owner_user_id is set), UNAVAILABLE (live feed down or the server
+  // shutting down; retry with backoff), DEADLINE_EXCEEDED (the stream reached
+  // its maximum age; reopen it).
+  rpc StreamHouseLive(StreamHouseLiveRequest) returns (stream StreamHouseLiveResponse);
 }
 
 service DeviceRegistrationService {
@@ -194,6 +203,27 @@ message GetEnergySummaryResponse {
   optional double self_consumption_pct = 3;
   // Unset when the range has no readings.
   PeakDemand peak_demand = 4;
+}
+
+message StreamHouseLiveRequest {
+  string house_id = 1;
+  // Optional. When set, the house must belong to this user (NOT_FOUND
+  // otherwise). The gateway leaves it empty for its shared per-house stream
+  // and checks ownership when each user subscribes.
+  string owner_user_id = 2;
+}
+
+message StreamHouseLiveResponse {
+  oneof event {
+    MeterReading reading = 1;
+    MeterStatusUpdate status = 2;
+  }
+}
+
+message MeterStatusUpdate {
+  MeterStatus meter_status = 1;
+  // Unset when offline.
+  google.protobuf.Timestamp last_heartbeat_at = 2;
 }
 
 // Initiates a new smart meter registration request.
