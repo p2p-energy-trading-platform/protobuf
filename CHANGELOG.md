@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.1](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.26.0...v1.26.1) (2026-11-21)
+
+
+### Bug Fixes
+
+* incorrect parameter name ([#85](https://github.com/p2p-energy-trading-platform/protobuf/issues/85)) ([d575160](https://github.com/p2p-energy-trading-platform/protobuf/commit/d575160410001aade75d235c9a8c196bf1f483fa))
+
 ## [1.26.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.25.0...v1.26.0) (2026-11-21)
 
 
