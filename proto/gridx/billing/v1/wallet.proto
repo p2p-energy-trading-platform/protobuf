@@ -12,6 +12,17 @@ option go_package = "github.com/p2p-energy-trading-platform/go-sdk/gen/gridx/bil
 service WalletService {
   // Returns the caller's wallet, creating an empty one on first use.
   rpc GetWallet(GetWalletRequest) returns (GetWalletResponse);
+  rpc ListTransactions(ListTransactionsRequest) returns (ListTransactionsResponse);
+
+  // Deposits
+  rpc CreateDepositIntent(CreateDepositIntentRequest) returns (CreateDepositIntentResponse);
+  rpc ConfirmDeposit(ConfirmDepositRequest) returns (ConfirmDepositResponse);
+  rpc GetDeposit(GetDepositRequest) returns (GetDepositResponse);
+
+  // Withdrawals
+  rpc RequestWithdrawal(RequestWithdrawalRequest) returns (RequestWithdrawalResponse);
+  rpc CancelWithdrawal(CancelWithdrawalRequest) returns (CancelWithdrawalResponse);
+  rpc ListWithdrawals(ListWithdrawalsRequest) returns (ListWithdrawalsResponse);
 }
 
 enum WalletStatus {
@@ -20,6 +31,26 @@ enum WalletStatus {
   // Rejects reserve and withdraw while a dispute is open.
   WALLET_STATUS_FROZEN = 2;
   WALLET_STATUS_CLOSED = 3;
+}
+
+enum DepositStatus {
+  DEPOSIT_STATUS_UNSPECIFIED = 0;
+  DEPOSIT_STATUS_PENDING = 1;
+  DEPOSIT_STATUS_COMPLETED = 2;
+  DEPOSIT_STATUS_FAILED = 3;
+  DEPOSIT_STATUS_EXPIRED = 4;
+  DEPOSIT_STATUS_REFUNDED = 5;
+  DEPOSIT_STATUS_DISPUTED = 6;
+}
+
+enum WithdrawalStatus {
+  WITHDRAWAL_STATUS_UNSPECIFIED = 0;
+  WITHDRAWAL_STATUS_PENDING = 1;
+  WITHDRAWAL_STATUS_APPROVED = 2;
+  WITHDRAWAL_STATUS_PAID = 3;
+  WITHDRAWAL_STATUS_REJECTED = 4;
+  WITHDRAWAL_STATUS_CANCELLED = 5;
+  WITHDRAWAL_STATUS_FAILED = 6;
 }
 
 // All amounts are minor units: 1 credit = 100 units.
@@ -37,4 +68,101 @@ message GetWalletRequest {}
 
 message GetWalletResponse {
   Wallet wallet = 1;
+}
+
+message DepositIntent {
+  string deposit_id = 1;
+  DepositStatus status = 2;
+  string checkout_url = 3;
+  int64 amount = 4;
+  string charge_currency = 5;
+  int64 charge_amount = 6;
+  google.protobuf.Timestamp expires_at = 7;
+  google.protobuf.Timestamp created_at = 8;
+}
+
+message CreateDepositIntentRequest {
+  string idempotency_key = 1;
+  int64 amount = 2;
+  string success_url = 3;
+  string cancel_url = 4;
+}
+
+message CreateDepositIntentResponse {
+  DepositIntent deposit = 1;
+}
+
+message ConfirmDepositRequest {
+  bytes raw_body = 1;
+  map<string, string> headers = 2;
+}
+
+message ConfirmDepositResponse {
+  bool processed = 1;
+  string desposit_id = 2;
+  DepositStatus status = 3;
+}
+
+message GetDepositRequest {
+  string deposit_id = 1;
+}
+
+message GetDepositResponse {
+  DepositIntent deposit = 1;
+}
+
+message Withdrawal {
+  string withdrawal_id = 1;
+  string wallet_id = 2;
+  int64 amount = 3;
+  WithdrawalStatus status = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message RequestWithdrawalRequest {
+  string idempotency_key = 1;
+  int64 amount = 2;
+  bytes destination_json = 3;
+}
+
+message RequestWithdrawalResponse {
+  Withdrawal withdrawal = 1;
+}
+
+message CancelWithdrawalRequest {
+  string withdrawal_id = 1;
+}
+
+message CancelWithdrawalResponse {
+  Withdrawal withdrawal = 1;
+}
+
+message ListWithdrawalsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListWithdrawalsResponse {
+  repeated Withdrawal withdrawals = 1;
+  string next_page_token = 2;
+}
+
+message ListTransactionsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message TransactionItem {
+  int64 entry_id = 1;
+  string journal_id = 2;
+  string type = 3; // DEPOSIT | WITHDRAWAL | TRADE_SETTLEMENT | ADJUSTMENT
+  int64 amount = 4;
+  int64 balance_after = 5;
+  google.protobuf.Timestamp created_at = 6;
+}
+
+message ListTransactionsResponse {
+  repeated TransactionItem transactions = 1;
+  string next_page_token = 2;
 }
