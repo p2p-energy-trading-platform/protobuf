@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.25.0...v1.26.0) (2026-11-21)
+
+
+### Features
+
+* add deposit.wuthdrawal and stripe rpc methods ([#83](https://github.com/p2p-energy-trading-platform/protobuf/issues/83)) ([0d01cd4](https://github.com/p2p-energy-trading-platform/protobuf/commit/0d01cd4661e06cc0e4121e61df23349c438c7fb6))
+
 ## [1.25.0](https://github.com/p2p-energy-trading-platform/protobuf/compare/v1.24.0...v1.25.0) (2026-11-20)
 
 
