@@ -99,8 +99,10 @@ message ConfirmDepositRequest {
 
 message ConfirmDepositResponse {
   bool processed = 1;
-  string desposit_id = 2;
+  reserved 2;
+  reserved "desposit_id";
   DepositStatus status = 3;
+  string deposit_id = 4;
 }
 
 message GetDepositRequest {
